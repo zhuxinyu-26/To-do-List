@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs") %>
+    <div class="listBody">
+        <% if(locals.dayToday){ %>
+            <h3>To Do for <%= monthToday%>
+                    <%=dateToday %> ( <%=dayToday %> ):</h3>
+            <% }%>
+
+            <ul>
+                <% for (let i = 0; i < toDoList.length; i++) { %>
+                    <li>
+                        <div class="taskContent <%= toDoList[i].completed ? 'slashed' : '' %>">
+                            <p class="taskText">
+                                <%= toDoList[i].description %>
+                            </p>
+                        </div>
+                        <i class="fa-regular <%= toDoList[i].completed ? 'fa-square-check' : 'fa-square' %> checkBox" data-task-index="<%= i %>"></i>
+                    </li>
+                <% } %>
+                
+            </ul>
+            
+
+                <form action="/submit" method="post">
+                    <input type="text" name="taskToday" class="taskToday" placeholder="Enter your new task">
+                
+                    <button type="submit"name="submit" class="addButton"><i class="fa-solid fa-plus"></i></button>
+                </form>
+    </div>
+    
+    <%- include("partials/footer.ejs") %>

@@ -1,0 +1,27 @@
+<%- include("partials/header.ejs") %>
+<div class="listBody">
+    
+        <h3>Work To Do:</h3>
+      
+
+            <ul>
+                <% for (let i=0; i < toWorkList.length; i++) { const workListItem=toWorkList[i];%>
+                    <li>
+                        <div class="taskContent">
+                            <p class="taskText">
+                                <%= workListItem %>
+                            </p>
+                        </div>
+                        <i class="fa-regular fa-square checkBox"></i>
+
+                        <!-- <i class="fa-regular fa-square"></i> -->
+                    </li>
+                    <%} %>
+            </ul>
+
+
+    <form action="/submitwork" method="post">
+        <input type="text" name="taskWork"class="taskToday" placeholder="Enter your new task for work">
+        <button type="submit"name="submit" class="addButton"><i class="fa-solid fa-plus"></i></button> </form>
+</div>
+    <%- include("partials/footer.ejs") %>
